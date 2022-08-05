@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Continent extends Model
+class Region extends Model
 {
     //La tabla con la cual el modelo se relaciona
-    protected $table = "continents";
+    protected $table = "regions";
     //La clave primaria de la tabla
-    protected $primaryKey="continent_id";
+    protected $primaryKey="region_id";
     //anular campos de auditoria
     public $timestamps = false;
     use HasFactory;
-    
-    //La relacion entre ccontinente y region
-    public function regiones(){
-        return $this->hasMany(Region::class, 'continent_id' );
+
+    //relacion entre region y country
+    public function paises(){
+        return $this->hasMany(country::class,'region_id');
     }
 }
